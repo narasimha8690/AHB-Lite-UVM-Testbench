@@ -1,0 +1,16 @@
+interface ahb_if(input bit clk, input bit rst_n);
+  logic [31:0] haddr;
+  logic [31:0] hwdata;
+  logic [31:0] hrdata;
+  logic [1:0]  htrans;
+  logic        hwrite;
+  logic        hready;
+  logic        hresp;
+  logic        hsel;
+
+  modport DUT (input haddr, hwdata, htrans, hwrite, hsel, input clk, rst_n,
+               output hrdata, hready, hresp);
+               
+  modport TB  (output haddr, hwdata, htrans, hwrite, hsel, input clk, rst_n,
+               input hrdata, hready, hresp);
+endinterface
